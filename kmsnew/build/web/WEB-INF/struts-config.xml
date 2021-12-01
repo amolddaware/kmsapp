@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts-config PUBLIC
+          "-//Apache Software Foundation//DTD Struts Configuration 1.3//EN"
+          "http://jakarta.apache.org/struts/dtds/struts-config_1_3.dtd">
+
+
+<struts-config>
+    <form-beans>
+    
+    </form-beans>
+    
+    <global-exceptions>
+    
+    </global-exceptions>
+
+    <global-forwards>
+        <forward name="welcome"  path="/Welcome.do"/>
+    </global-forwards>
+
+    <action-mappings>
+        <action path="/updategr" type="org.fsc.gr.UpdateGRAction"/>
+        <action path="/removepdf" type="org.fsc.gr.RemovePDFAction"/>
+        <action path="/addgr" type="org.fsc.gr.AddGRAction"/>
+        <action path="/updatedigitalmedia" type="org.fsc.digital.UpdateDigitalMediaAction"/>
+        <action path="/adddigitalmedia" type="org.fsc.digital.AddDigitalMediaAction"/>
+        <action path="/createuser" type="org.mygov.action.CreateUserAction"/>
+        <action path="/changepass" type="org.mygov.action.ChangePasswordAction"/>
+        <action path="/removecr" type="org.mygov.graphics.RemoveCRAction"/>
+        <action path="/graphicstag" type="org.mygov.graphics.GraphicsTagAction"/>
+        <action path="/graphicsupdate" type="org.mygov.graphics.GraphicsUpdateAction"/>
+        <action path="/addgraphics" type="org.mygov.graphics.AddGraphicsAction"/>
+        <action path="/approverupdate" type="org.mygov.news.update.ApproverUpdateAction"/>
+        <action path="/updateapprovernews" type="org.mygov.news.update.ApproverNewsUpdateAction"/>
+        <action path="/updatetextnewsaction" type="org.mygov.news.update.TextNewsUpdateAction"/>
+        <action path="/newsinfoupdate" type="org.mygov.news.update.NewsInformationUpdateAction"/>
+        <action path="/emaddothervideo" type="org.mygov.news.EmAddOtherVideoAction"/>
+        <action path="/removevideo" type="org.mygov.news.RemoveVideoAction"/>
+        <action path="/addtextnews" type="org.mygov.news.TextNewsAction"/>
+        <action path="/newsdragndrop" type="org.mygov.news.NewsDragNDropAction"/>
+        <action path="/newsupload" type="org.mygov.news.NewsUploadAction"/>
+        <action path="/approvertagupdate" type="org.fsc.printmedia.ApproverTagUpdateAction"/>
+        <action path="/updatewebmedia" type="org.fsc.printmedia.UpdateWebsAction"/>
+        <action path="/addprintweb" type="org.fsc.printmedia.AddPWebMediaAction"/>
+        <action path="/removeimage" type="org.fsc.printmedia.RemoveImageAction"/>
+        <action path="/updateprintmediadataentry" type="org.fsc.printmedia.UpdatePrintMediaDataentryAction"/>
+        <action path="/addprintmedia" type="org.fsc.printmedia.UploadPrintMediaAction"/>
+        <action path="/logout" type="org.mygov.action.LogoutAction"/>
+        <action path="/login" type="org.mygov.action.LoginAction"/>
+        <action path="/Welcome" forward="/welcomeStruts.jsp"/>
+    </action-mappings>
+    
+    <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
+
+    <message-resources parameter="com/myapp/struts/ApplicationResource"/>    
+    
+    <!-- ========================= Tiles plugin ===============================-->
+    <!--
+    This plugin initialize Tiles definition factory. This later can takes some
+    parameters explained here after. The plugin first read parameters from
+    web.xml, thenoverload them with parameters defined here. All parameters
+    are optional.
+    The plugin should be declared in each struts-config file.
+    - definitions-config: (optional)
+    Specify configuration file names. There can be several comma
+    separated file names (default: ?? )
+    - moduleAware: (optional - struts1.1)
+    Specify if the Tiles definition factory is module aware. If true
+    (default), there will be one factory for each Struts module.
+    If false, there will be one common factory for all module. In this
+    later case, it is still needed to declare one plugin per module.
+    The factory will be initialized with parameters found in the first
+    initialized plugin (generally the one associated with the default
+    module).
+    true : One factory per module. (default)
+    false : one single shared factory for all modules
+    - definitions-parser-validate: (optional)
+    Specify if xml parser should validate the Tiles configuration file.
+    true : validate. DTD should be specified in file header (default)
+    false : no validation
+
+    Paths found in Tiles definitions are relative to the main context.
+    -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml" />      
+        <set-property property="moduleAware" value="true" />
+    </plug-in>
+    
+    <!-- ========================= Validator plugin ================================= -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
+        <set-property
+            property="pathnames"
+            value="/WEB-INF/validator-rules.xml,/WEB-INF/validation.xml"/>
+    </plug-in>
+  
+</struts-config>
